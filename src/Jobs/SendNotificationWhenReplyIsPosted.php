@@ -54,7 +54,7 @@ class SendNotificationWhenReplyIsPosted implements ShouldQueue
             return;
         }
 
-        $notify = $this->post->discussion->readers()
+        /* $notify = $this->post->discussion->readers()
             ->where('users.id', '!=', $this->post->user_id)
             ->join('tag_user', 'tag_user.user_id', '=', 'users.id')
             ->whereIn('tag_user.tag_id', $tagIds->all())
@@ -69,6 +69,6 @@ class SendNotificationWhenReplyIsPosted implements ShouldQueue
         $notifications->sync(
             new NewPostBlueprint($this->post),
             $notify->all()
-        );
+        );*/
     }
 }
