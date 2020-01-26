@@ -13,7 +13,7 @@ export default class NewDiscussionNotification extends Notification {
     }
 
     content() {
-        return app.translator.trans('fof-follow-tags.forum.notifications.new_discussion_text', {
+        return app.translator.trans('simonxeko-follow-users.forum.notifications.new_discussion_text', {
             user: this.props.notification.fromUser(),
             title: this.props.notification.subject().title(),
         });

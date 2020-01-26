@@ -14,32 +14,32 @@ export default class SubscriptionMenu extends Dropdown {
             {
                 subscription: false,
                 icon: icons[false],
-                label: app.translator.trans('fof-follow-tags.forum.sub_controls.not_following_button'),
-                description: app.translator.trans('fof-follow-tags.forum.sub_controls.not_following_text'),
+                label: app.translator.trans('simonxeko-follow-users.forum.sub_controls.not_following_button'),
+                description: app.translator.trans('simonxeko-follow-users.forum.sub_controls.not_following_text'),
             },
             {
                 subscription: 'follow',
                 icon: icons.follow,
-                label: app.translator.trans('fof-follow-tags.forum.sub_controls.following_button'),
-                description: app.translator.trans('fof-follow-tags.forum.sub_controls.following_text'),
+                label: app.translator.trans('simonxeko-follow-users.forum.sub_controls.following_button'),
+                description: app.translator.trans('simonxeko-follow-users.forum.sub_controls.following_text'),
             },
             {
                 subscription: 'lurk',
                 icon: icons.lurk,
-                label: app.translator.trans('fof-follow-tags.forum.sub_controls.lurking_button'),
-                description: app.translator.trans('fof-follow-tags.forum.sub_controls.lurking_text'),
+                label: app.translator.trans('simonxeko-follow-users.forum.sub_controls.lurking_button'),
+                description: app.translator.trans('simonxeko-follow-users.forum.sub_controls.lurking_text'),
             },
             {
                 subscription: 'ignore',
                 icon: icons.ignore,
-                label: app.translator.trans('fof-follow-tags.forum.sub_controls.ignoring_button'),
-                description: app.translator.trans('fof-follow-tags.forum.sub_controls.ignoring_text'),
+                label: app.translator.trans('simonxeko-follow-users.forum.sub_controls.ignoring_button'),
+                description: app.translator.trans('simonxeko-follow-users.forum.sub_controls.ignoring_text'),
             },
             {
                 subscription: 'hide',
                 icon: icons.hide,
-                label: app.translator.trans('fof-follow-tags.forum.sub_controls.hiding_button'),
-                description: app.translator.trans('fof-follow-tags.forum.sub_controls.hiding_text'),
+                label: app.translator.trans('simonxeko-follow-users.forum.sub_controls.hiding_button'),
+                description: app.translator.trans('simonxeko-follow-users.forum.sub_controls.hiding_text'),
             },
         ];
     }
@@ -48,14 +48,14 @@ export default class SubscriptionMenu extends Dropdown {
         const tag = this.props.tag;
         const subscription = tag.subscription() || false;
 
-        let buttonLabel = app.translator.trans('fof-follow-tags.forum.sub_controls.follow_button');
+        let buttonLabel = app.translator.trans('simonxeko-follow-users.forum.sub_controls.follow_button');
         let buttonIcon = icons[subscription] || 'far fa-star';
         const buttonClass = 'SubscriptionMenu-button--' + subscription;
 
         if (['follow', 'lurk', 'ignore', 'hide'].includes(subscription)) {
             const word = ['ignore', 'hide'].includes(subscription) ? subscription.slice(0, subscription.length - 1) : subscription;
 
-            buttonLabel = app.translator.trans(`fof-follow-tags.forum.sub_controls.${word}ing_button`);
+            buttonLabel = app.translator.trans(`simonxeko-follow-users.forum.sub_controls.${word}ing_button`);
         }
 
         const preferences = app.session.user.preferences();
@@ -64,7 +64,7 @@ export default class SubscriptionMenu extends Dropdown {
 
         const title = extractText(
             app.translator.trans(
-                notifyEmail ? 'fof-follow-tags.forum.sub_controls.notify_email_tooltip' : 'fof-follow-tags.forum.sub_controls.notify_alert_tooltip'
+                notifyEmail ? 'simonxeko-follow-users.forum.sub_controls.notify_email_tooltip' : 'simonxeko-follow-users.forum.sub_controls.notify_alert_tooltip'
             )
         );
 
