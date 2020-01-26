@@ -1,5 +1,17 @@
 simonxeko-follow-users:
+
+  admin:
+    permissions:
+      can_not_be_followed_label: Cannot be followed
+
   forum:
+    profile_link: Followed
+    user_controls:
+      follow_button: Follow
+      follow_confirmation: Are you sure to follow this user?
+      unfollow_button: Unfollow
+      unfollow_confirmation: Are you sure to unfollow this user?
+
     settings:
       notify_new_discussion_label: Someone I'm following creates a discussion
       notify_new_post_label: Someone I'm following posts a reply
