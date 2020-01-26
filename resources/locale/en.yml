@@ -1,8 +1,8 @@
 simonxeko-follow-users:
   forum:
     settings:
-      notify_new_discussion_label: Someone creates a discussion in a tag I'm following
-      notify_new_post_label: Someone posts in a tag I'm following
+      notify_new_discussion_label: Someone I'm following creates a discussion
+      notify_new_post_label: Someone I'm following posts a reply
 
 
     index:
