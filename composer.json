@@ -23,7 +23,7 @@
   },
   "extra": {
     "flarum-extension": {
-      "title": "Okex Follow Users",
+      "title": "Follow Users",
       "icon": {
         "name": "fas fa-user-tag",
         "backgroundColor": "#e74c3c",
