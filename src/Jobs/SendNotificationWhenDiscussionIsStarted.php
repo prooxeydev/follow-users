@@ -9,16 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace FoF\FollowTags\Jobs;
+namespace Simonxeko\FollowUsers\Jobs;
 
 use Flarum\Discussion\Discussion;
 use Flarum\Notification\NotificationSyncer;
 use Flarum\User\User;
-use FoF\FollowTags\Notifications\NewDiscussionBlueprint;
+use Simonxeko\FollowUsers\Notifications\NewDiscussionBlueprint;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class SendNotificationWhenDiscussionIsStarted implements ShouldQueue
 {
@@ -49,16 +50,7 @@ class SendNotificationWhenDiscussionIsStarted implements ShouldQueue
             return;
         }
 
-        $notify = User::where('users.id', '!=', $this->discussion->user_id)
-            ->join('tag_user', 'tag_user.user_id', '=', 'users.id')
-            ->whereIn('tag_user.tag_id', $tagIds->all())
-            ->whereIn('tag_user.subscription', ['follow', 'lurk'])
-            ->get()
-            ->reject(function ($user) use ($firstPost, $tags) {
-                return $tags->map->stateFor($user)->map->subscription->contains('ignore')
-                        || !$this->discussion->newQuery()->whereVisibleTo($user)->find($this->discussion->id)
-                        || !$firstPost->isVisibleTo($user);
-            });
+        $notify = $this->discussion->user->followedBy;
 
         $notifications->sync(
             new NewDiscussionBlueprint($this->discussion, $firstPost),
