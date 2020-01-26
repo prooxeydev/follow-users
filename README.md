@@ -1,5 +1,6 @@
 # Follow Users for Flarum
-This extension is modified from FriendsOfFlarum's follow-tags & ignore-user
+This extension is modified from FriendsOfFlarum's follow-tags & ignore-user.
+Note: This repository might not be actively maintained.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/fof/follow-tags.svg)](https://packagist.org/packages/fof/follow-tags) [![OpenCollective](https://img.shields.io/badge/opencollective-fof-blue.svg)](https://opencollective.com/fof/donate) [![Donate](https://img.shields.io/badge/donate-datitisev-important.svg)](https://datitisev.me/donate)
 
