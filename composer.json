@@ -1,6 +1,6 @@
 {
-  "name": "fof/follow-tags",
-  "description": "Follow tags and be notified of new discussions and replies",
+  "name": "simonxeko/follow-users",
+  "description": "Follow users and be notified of new discussions and replies",
   "keywords": [
     "flarum"
   ],
@@ -18,12 +18,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "FoF\\FollowTags\\": "src/"
+      "Simonxeko\\FollowUsers\\": "src/"
     }
   },
   "extra": {
     "flarum-extension": {
-      "title": "FoF Follow Tags",
+      "title": "Okex Follow Users",
       "icon": {
         "name": "fas fa-user-tag",
         "backgroundColor": "#e74c3c",
