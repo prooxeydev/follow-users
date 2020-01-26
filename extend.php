@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FoF\FollowTags;
+namespace Simonxeko\FollowUsers;
 
 use Flarum\Api\Event\Serializing;
 use Flarum\Api\Serializer\DiscussionSerializer;
@@ -18,22 +18,26 @@ use Flarum\Event\ConfigureNotificationTypes;
 use Flarum\Extend;
 use Flarum\Notification\Event as Notification;
 use Flarum\Post\Event as Post;
-use FoF\FollowTags\Notifications\NewDiscussionBlueprint;
-use FoF\FollowTags\Notifications\NewPostBlueprint;
+use Simonxeko\FollowUsers\Notifications\NewDiscussionBlueprint;
+use Simonxeko\FollowUsers\Notifications\NewPostBlueprint;
+use Simonxeko\FollowUsers\Listeners;
+use Simonxeko\FollowUsers\Access;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Events\Dispatcher;
+use Flarum\User\Event\Saving;
 
 return [
     (new Extend\Frontend('forum'))
         ->js(__DIR__.'/js/dist/forum.js')
-        ->css(__DIR__.'/resources/less/forum.less'),
+        ->css(__DIR__.'/resources/less/forum.less')
+        ->route('/followedUsers', 'followed.users.view'),
     new Extend\Locales(__DIR__.'/resources/locale'),
 
-    (new Extend\Routes('api'))
-        ->post('/tags/{id}/subscription', 'fof-follow-tags.subscription', Controllers\ChangeTagSubscription::class),
+    /*(new Extend\Routes('api'))
+        ->post('/tags/{id}/subscription', 'simonxeko-follow-users.subscription', Controllers\ChangeTagSubscription::class),*/
 
     new Extend\Compat(function (Dispatcher $events, Factory $views) {
-        $events->listen(Serializing::class, Listeners\AddTagSubscriptionAttribute::class);
+        // $events->listen(Serializing::class, Listeners\AddTagSubscriptionAttribute::class);
 
         $events->listen(ConfigureNotificationTypes::class, function (ConfigureNotificationTypes $event) {
             $event->add(NewDiscussionBlueprint::class, DiscussionSerializer::class, ['alert', 'email']);
@@ -48,10 +52,15 @@ return [
         $events->listen([Post\Hidden::class, Post\Deleted::class], Listeners\DeleteNotificationWhenPostIsHiddenOrDeleted::class);
         $events->listen(Post\Restored::class, Listeners\RestoreNotificationWhenPostIsRestored::class);
 
-        $events->listen(Discussion\Searching::class, Listeners\HideDiscussionsInIgnoredTags::class);
+        // $events->listen(Discussion\Searching::class, Listeners\HideDiscussionsInIgnoredTags::class);
 
-        $events->listen(Notification\Sending::class, Listeners\PreventMentionNotificationsFromIgnoredTags::class);
+        // $events->listen(Notification\Sending::class, Listeners\PreventMentionNotificationsFromIgnoredTags::class);
 
-        $views->addNamespace('fof-follow-tags', __DIR__.'/resources/views');
+        $views->addNamespace('simonxeko-follow-users', __DIR__.'/resources/views');
+
+        $events->subscribe(Listeners\AddFollowedUsersRelationship::class);
+        $events->listen(Saving::class, Listeners\SaveFollowedToDatabase::class);
+        $events->subscribe(Access\UserPolicy::class);
+        // die('all subscribed');
     }),
 ];
