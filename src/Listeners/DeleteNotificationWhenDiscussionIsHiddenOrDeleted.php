@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace FoF\FollowTags\Listeners;
+namespace Simonxeko\FollowUsers\Listeners;
 
 use Flarum\Discussion\Event\Deleted;
 use Flarum\Discussion\Event\Hidden;
 use Flarum\Notification\NotificationSyncer;
-use FoF\FollowTags\Notifications\NewDiscussionBlueprint;
+use Simonxeko\FollowUsers\Notifications\NewDiscussionBlueprint;
 
 class DeleteNotificationWhenDiscussionIsHiddenOrDeleted
 {

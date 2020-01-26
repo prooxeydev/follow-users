@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace FoF\FollowTags\Listeners;
+namespace Simonxeko\FollowUsers\Listeners;
 
 use Flarum\Notification\NotificationSyncer;
 use Flarum\Post\Event\Restored;
-use FoF\FollowTags\Notifications\NewPostBlueprint;
+use Simonxeko\FollowUsers\Notifications\NewPostBlueprint;
 
 class RestoreNotificationWhenPostIsRestored
 {

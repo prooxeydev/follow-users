@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FoF\FollowTags\Notifications;
+namespace Simonxeko\FollowUsers\Notifications;
 
 use Flarum\Discussion\Discussion;
 use Flarum\Notification\Blueprint\BlueprintInterface;
@@ -60,7 +60,7 @@ class NewPostBlueprint implements BlueprintInterface, MailableInterface
      */
     public function getEmailView()
     {
-        return ['text' => 'fof-follow-tags::emails.newPost'];
+        return ['text' => 'simonxeko-follow-users::emails.newPost'];
     }
 
     /**
@@ -68,7 +68,7 @@ class NewPostBlueprint implements BlueprintInterface, MailableInterface
      */
     public function getEmailSubject()
     {
-        return app('translator')->trans('fof-follow-tags.email.newPostInTag', [
+        return app('translator')->trans('simonxeko-follow-users.email.newPostInTag', [
             'title' => $this->post->discussion->title,
         ]);
     }

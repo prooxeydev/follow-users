@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace FoF\FollowTags\Listeners;
+namespace Simonxeko\FollowUsers\Listeners;
 
 use Flarum\Approval\Event\PostWasApproved;
 use Flarum\Discussion\Event\Started;
 use Flarum\Post\Event\Posted;
-use FoF\FollowTags\Jobs;
+use Simonxeko\FollowUsers\Jobs;
 use Illuminate\Events\Dispatcher;
 
 class QueueNotificationJobs
@@ -39,9 +39,10 @@ class QueueNotificationJobs
             return;
         }
 
-        app('flarum.queue.connection')->push(
+        // TODO: Support reply option?
+        /* app('flarum.queue.connection')->push(
             new Jobs\SendNotificationWhenReplyIsPosted($event->post, $event->post->discussion->last_post_number)
-        );
+        ); */
     }
 
     public function whenPostApproved(PostWasApproved $event)

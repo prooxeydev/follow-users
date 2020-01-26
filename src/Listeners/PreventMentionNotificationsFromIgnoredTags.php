@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FoF\FollowTags\Listeners;
+namespace Simonxeko\FollowUsers\Listeners;
 
 use Flarum\Mentions\Notification\PostMentionedBlueprint;
 use Flarum\Mentions\Notification\UserMentionedBlueprint;

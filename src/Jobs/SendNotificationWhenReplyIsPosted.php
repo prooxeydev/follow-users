@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace FoF\FollowTags\Jobs;
+namespace Simonxeko\FollowUsers\Jobs;
 
 use Flarum\Notification\NotificationSyncer;
 use Flarum\Post\Post;
 use Flarum\User\User;
-use FoF\FollowTags\Notifications\NewPostBlueprint;
+use Simonxeko\FollowUsers\Notifications\NewPostBlueprint;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\SerializesModels;
