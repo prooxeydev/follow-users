@@ -16,6 +16,13 @@ import UserPage from 'flarum/components/UserPage';
 
 export default function () {
     extend(UserPage.prototype, 'navItems', function (items) {
+        items.add("followed-by",
+            LinkButton.component({
+                href: app.route('followedBy'),
+                children: app.translator.trans('simonxeko-follow-users.forum.followed_by'),
+                icon: 'fas fa-user',
+            }),
+        );
         if (app.session.user && app.session.user === this.user)
         items.add('followed-users',
             LinkButton.component({
@@ -24,5 +31,6 @@ export default function () {
                 icon: 'fas fa-user',
             }),
         );
+
     });
 }

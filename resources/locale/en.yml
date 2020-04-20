@@ -6,6 +6,7 @@ simonxeko-follow-users:
 
   forum:
     profile_link: Followed
+    followed_by: Followed by
     user_controls:
       follow_button: Follow
       follow_confirmation: Are you sure to follow this user?

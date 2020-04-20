@@ -59,6 +59,7 @@ return [
         $views->addNamespace('simonxeko-follow-users', __DIR__.'/resources/views');
 
         $events->subscribe(Listeners\AddFollowedUsersRelationship::class);
+        $events->subscribe(Listeners\AddFollowedUsersRelationship::class);
         $events->listen(Saving::class, Listeners\SaveFollowedToDatabase::class);
         $events->subscribe(Access\UserPolicy::class);
         // die('all subscribed');
